@@ -199,7 +199,7 @@ func (p *ZunProvider) getContainers(ctx context.Context, pod *v1.Pod) ([]Contain
 			if _, ok := container.Resources.Limits[v1.ResourceMemory]; ok {
 				memoryLimit = float64(container.Resources.Limits.Memory().Value()) / 1000000000.00
 			}
-
+			c.Resources.Limits = ResourceList{}
 			c.Resources.Limits["cpu"] = cpuLimit
 			c.Resources.Limits["memory"] = memoryLimit * 1024
 		}
